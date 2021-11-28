@@ -1,12 +1,14 @@
 <template>
   <TopBar />
   <Hero />
+  <Articles />
   <Footer />
 </template>
 
 <script>
 import TopBar from "@/components/TopBar.vue";
 import Hero from "@/components/Hero.vue";
+import Articles from "@/components/Articles.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
@@ -14,6 +16,7 @@ export default {
   components: {
     TopBar,
     Hero,
+    Articles,
     Footer,
   },
 };
@@ -27,6 +30,7 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Public Sans", sans-serif;
 }
 
 body {

@@ -20,6 +20,5 @@ export default {
 
 .cta-btn:hover {
   background: linear-gradient(90deg, #84e1a7 4.85%, #81d6db 100%);
-  margin-top: -1px;
 }
 </style>

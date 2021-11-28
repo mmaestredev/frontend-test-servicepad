@@ -53,12 +53,11 @@
         </li>
       </a>
     </ul>
-    <cta-button>Request Invite</cta-button>
+    <CtaButton>Request Invite</CtaButton>
   </nav>
 </template>
 
 <script>
-import CtaButton from "@/components/ui/CtaButton";
 export default {
   name: "top-bar",
   data() {
@@ -69,7 +68,6 @@ export default {
       this.activeItem = item;
     },
   },
-  components: { CtaButton },
 };
 </script>
 
@@ -82,6 +80,8 @@ nav {
   align-items: center;
   padding-left: 164px;
   padding-right: 164px;
+  position: fixed;
+  z-index: 1;
 }
 
 .logo {

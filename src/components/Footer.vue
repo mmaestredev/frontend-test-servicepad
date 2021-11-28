@@ -5,20 +5,20 @@
 
       <div class="socials">
         <a href="#" class="social-icon">
-          <img src="@/assets/icon-facebook-1.png" alt=""
-        /></a>
+          <i class="social-facebook"></i>
+        </a>
         <a href="#" class="social-icon">
-          <img src="@/assets/icon-youtube-1.png" alt=""
-        /></a>
+          <i class="social-youtube"></i>
+        </a>
         <a href="#" class="social-icon">
-          <img src="@/assets/icon-twitter-1.png" alt=""
-        /></a>
+          <i class="social-twitter"></i>
+        </a>
         <a href="#" class="social-icon">
-          <img src="@/assets/icon-pinterest-2.png" alt=""
-        /></a>
+          <i class="social-pinterest"></i>
+        </a>
         <a href="#" class="social-icon">
-          <img src="@/assets/icon-instagram-1.png" alt=""
-        /></a>
+          <i class="social-instagram"></i>
+        </a>
       </div>
     </div>
     <ul class="footer-nav">
@@ -51,10 +51,8 @@
 </template>
 
 <script>
-import CtaButton from "@/components/ui/CtaButton";
 export default {
-  name: "footer",
-  components: { CtaButton },
+  name: "base-footer",
 };
 </script>
 
@@ -75,7 +73,8 @@ footer {
   padding: 8px;
 }
 
-.footer-nav a {
+.footer-nav a,
+.socials a {
   color: inherit;
   text-decoration: none;
 }
@@ -85,8 +84,12 @@ footer {
 }
 
 .social-icon {
-  width: 20px;
-  height: 20px;
   margin-right: 14px;
+  font-size: 20px;
+}
+
+.social-icon:hover,
+.footer-nav a:hover {
+  color: #77bda3;
 }
 </style>

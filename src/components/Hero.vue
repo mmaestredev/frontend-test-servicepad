@@ -1,5 +1,5 @@
 <template>
-  <section id="hero">
+  <section id="home" class="hero">
     <div id="hero-main">
       <div class="hero-content">
         <h1 class="hero-title">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div id="hero-secondary">
+    <div id="about" class="hero-secondary">
       <div class="hero-content">
         <h1 class="hero-title">Why choose Easybank?</h1>
         <p style="margin-top: 20px">
@@ -85,15 +85,16 @@
 </template>
 
 <script>
-import CtaButton from "@/components/ui/CtaButton";
-
 export default {
   name: "hero-section",
-  components: { CtaButton },
 };
 </script>
 
 <style scoped>
+.hero {
+  padding-top: 76px;
+}
+
 #hero-main {
   background-color: #fafafa;
   display: grid;
@@ -103,7 +104,7 @@ export default {
   background-position-x: right;
 }
 
-#hero-secondary {
+.hero-secondary {
   background-color: #f4f5f7;
 }
 
