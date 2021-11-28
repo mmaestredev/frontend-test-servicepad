@@ -58,8 +58,9 @@ body::-webkit-scrollbar-thumb {
 .btn {
   cursor: pointer;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 19px 29px;
   border-radius: 89px;
+  line-height: 7px;
 }
 
 h1,

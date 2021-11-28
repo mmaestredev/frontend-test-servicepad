@@ -2,7 +2,7 @@
   <nav>
     <div class="logo">
       <a href="#home">
-        <img src="@/assets/logo-easybank.png" alt="" />
+        <img src="@/assets/logo-dark.png" alt="" />
       </a>
     </div>
     <ul class="nav-links">
@@ -80,12 +80,13 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 164px;
+  padding-right: 164px;
 }
 
 .logo {
   display: inline-block;
   text-align: center;
-  margin-left: 164px;
 }
 
 .nav-links {

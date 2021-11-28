@@ -16,8 +16,6 @@ export default {
   color: white;
   font-weight: bold;
   background: linear-gradient(90deg, #31cf70 4.85%, #2cb9cb 100%);
-  background-blend-mode: Pass through;
-  margin-right: 164px;
 }
 
 .cta-btn:hover {
