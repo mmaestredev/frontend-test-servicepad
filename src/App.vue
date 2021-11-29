@@ -1,7 +1,7 @@
 <template>
   <TopBar />
   <router-view> </router-view>
-  <Articles />
+  <Articles :nocta="$route.name == 'blogging'" />
   <Footer />
 </template>
 

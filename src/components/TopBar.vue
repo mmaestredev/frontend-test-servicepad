@@ -1,9 +1,9 @@
 <template>
   <nav>
     <div class="logo">
-      <a href="#home">
+      <router-link to="/#home">
         <img src="@/assets/logo-dark.png" alt="" />
-      </a>
+      </router-link>
     </div>
     <ul class="nav-links">
       <router-link

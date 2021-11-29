@@ -2,17 +2,18 @@
   <section id="blogging">
     <h1>Add New Blog Article</h1>
     <span>Publish a new blog article to feature in the Easybank homepage.</span>
-    <form class="card">
+
+    <form id="newPost" class="card">
       <div class="input-group">
         <label for="">Author</label>
         <input type="text" />
       </div>
       <div class="input-group">
-        <label for="">Author</label>
+        <label for="">Blog Title</label>
         <input type="text" />
       </div>
       <div class="input-group">
-        <label for="">Author</label>
+        <label for="">Blog Content</label>
         <textarea name="" id="" cols="30" rows="10"></textarea>
       </div>
 
@@ -25,31 +26,29 @@
       >Review and edit previous blog posts published on to the homepage.
     </span>
 
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Author Name</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Date</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="{ author, title, content, date, id } in pageArticles"
-            :key="id"
-          >
-            <td>{{ author }}</td>
-            <td>{{ title }}</td>
-            <td>{{ content }}</td>
-            <td>{{ new Date(date).toLocaleDateString() }}</td>
-            <td><a href="#">Edit</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Author Name</th>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="{ author, title, content, date, id } in pageArticles"
+          :key="id"
+        >
+          <td>{{ author }}</td>
+          <td>{{ title }}</td>
+          <td>{{ content }}</td>
+          <td>{{ new Date(date).toLocaleDateString() }}</td>
+          <td><router-link to="#newPost">Edit</router-link></td>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="pagination">
       <div style="margin-right: auto">Previous</div>
@@ -171,6 +170,15 @@ textarea {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #84e1a7;
 }
 
 table {

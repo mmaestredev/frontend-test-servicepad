@@ -2,11 +2,13 @@
   <section style="background: #fafafa; padding: 80px 164px">
     <div class="articles-header">
       <h1 style="width: fit-content; display: inline-block">Latest articles</h1>
-      <CtaButton style="float: right">&plus; Add New Article</CtaButton>
+      <CtaButton v-if="!nocta" style="float: right"
+        >&plus; Add New Article</CtaButton
+      >
     </div>
     <div class="articles-list">
       <Article
-        v-for="article in articles.slice(0, 4)"
+        v-for="article in articles.slice(-4)"
         :key="article.id"
         :image="article.image_url"
         :title="article.title"
@@ -22,6 +24,12 @@ import Article from "@/components/ui/Article";
 
 export default {
   name: "articles-section",
+  props: {
+    nocta: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       articles: [
