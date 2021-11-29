@@ -1,24 +1,16 @@
 <template>
   <TopBar />
-  <Hero />
-  <Articles />
+  <router-view> </router-view>
   <Footer />
 </template>
 
 <script>
 import TopBar from "@/components/TopBar.vue";
-import Hero from "@/components/Hero.vue";
-import Articles from "@/components/Articles.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
-  components: {
-    TopBar,
-    Hero,
-    Articles,
-    Footer,
-  },
+  components: { TopBar, Footer },
 };
 </script>
 

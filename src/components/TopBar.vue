@@ -6,54 +6,48 @@
       </a>
     </div>
     <ul class="nav-links">
-      <a href="#home">
-        <li
-          class="nav-link-item"
-          :class="activeItem == 'Home' ? 'active' : ''"
-          href="#home"
-          @click.stop="setActiveItem('Home')"
-        >
-          Home
-        </li>
-      </a>
-      <a href="#about">
-        <li
-          class="nav-link-item"
-          :class="activeItem == 'About' ? 'active' : ''"
-          @click.stop="setActiveItem('About')"
-        >
-          About
-        </li>
-      </a>
-      <a href="#contact">
-        <li
-          class="nav-link-item"
-          :class="activeItem == 'Contact' ? 'active' : ''"
-          @click.stop="setActiveItem('Contact')"
-        >
-          Contact
-        </li>
-      </a>
-      <a href="#blog">
-        <li
-          class="nav-link-item"
-          :class="activeItem == 'Blog' ? 'active' : ''"
-          @click.stop="setActiveItem('Blog')"
-        >
-          Blog
-        </li>
-      </a>
-      <a href="#careers">
-        <li
-          class="nav-link-item"
-          :class="activeItem == 'Careers' ? 'active' : ''"
-          @click.stop="setActiveItem('Careers')"
-        >
-          Careers
-        </li>
-      </a>
+      <router-link
+        to="#home"
+        tag="li"
+        class="nav-link-item"
+        :class="activeItem == 'home' ? 'active' : ''"
+        @click="setActiveItem('home')"
+        >Home</router-link
+      >
+      <router-link
+        to="#about"
+        tag="li"
+        class="nav-link-item"
+        :class="activeItem == 'about' ? 'active' : ''"
+        @click="setActiveItem('about')"
+        >About</router-link
+      >
+      <router-link
+        to="#contact"
+        tag="li"
+        class="nav-link-item"
+        :class="activeItem == 'contact' ? 'active' : ''"
+        @click="setActiveItem('contact')"
+        >Contact</router-link
+      >
+      <router-link
+        to="#blog"
+        tag="li"
+        class="nav-link-item"
+        :class="activeItem == 'blog' ? 'active' : ''"
+        @click="setActiveItem('blog')"
+        >Blog</router-link
+      >
+      <router-link
+        to="#careers"
+        tag="li"
+        class="nav-link-item"
+        :class="activeItem == 'careers' ? 'active' : ''"
+        @click="setActiveItem('careers')"
+        >Careers</router-link
+      >
     </ul>
-    <CtaButton>Request Invite</CtaButton>
+    <CtaButton v-if="!top">Request Invite</CtaButton>
   </nav>
 </template>
 
@@ -61,7 +55,9 @@
 export default {
   name: "top-bar",
   data() {
-    return { activeItem: "Home" };
+    return {
+      activeItem: "home",
+    };
   },
   methods: {
     setActiveItem(item) {
