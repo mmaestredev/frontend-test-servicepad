@@ -7,7 +7,7 @@
     </div>
     <ul class="nav-links">
       <router-link
-        to="#home"
+        to="/#home"
         tag="li"
         class="nav-link-item"
         :class="activeItem == 'home' ? 'active' : ''"
@@ -15,7 +15,7 @@
         >Home</router-link
       >
       <router-link
-        to="#about"
+        to="/#about"
         tag="li"
         class="nav-link-item"
         :class="activeItem == 'about' ? 'active' : ''"
@@ -23,7 +23,7 @@
         >About</router-link
       >
       <router-link
-        to="#contact"
+        to="/#contact"
         tag="li"
         class="nav-link-item"
         :class="activeItem == 'contact' ? 'active' : ''"
@@ -31,7 +31,7 @@
         >Contact</router-link
       >
       <router-link
-        to="#blog"
+        to="blog"
         tag="li"
         class="nav-link-item"
         :class="activeItem == 'blog' ? 'active' : ''"
@@ -39,7 +39,7 @@
         >Blog</router-link
       >
       <router-link
-        to="#careers"
+        to="/#careers"
         tag="li"
         class="nav-link-item"
         :class="activeItem == 'careers' ? 'active' : ''"
@@ -47,7 +47,7 @@
         >Careers</router-link
       >
     </ul>
-    <CtaButton v-if="!top">Request Invite</CtaButton>
+    <CtaButton>Request Invite</CtaButton>
   </nav>
 </template>
 
@@ -56,13 +56,17 @@ export default {
   name: "top-bar",
   data() {
     return {
-      activeItem: "home",
+      activeItem: "",
     };
   },
   methods: {
     setActiveItem(item) {
       this.activeItem = item;
     },
+  },
+  created() {
+    let hash = window.location.hash;
+    if (hash) this.setActiveItem(hash.replace("#", ""));
   },
 };
 </script>

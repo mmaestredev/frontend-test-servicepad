@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import Landing from "@/Landing.vue";
+import Blogging from "@/Blogging.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,6 +11,11 @@ const router = createRouter({
       name: "root",
       path: "/",
       component: Landing,
+    },
+    {
+      name: "blogging",
+      path: "/blog",
+      component: Blogging,
     },
   ],
   scrollBehavior: (to) => {

@@ -6,7 +6,7 @@
     </div>
     <div class="articles-list">
       <Article
-        v-for="article in articles"
+        v-for="article in articles.slice(0, 4)"
         :key="article.id"
         :image="article.image_url"
         :title="article.title"
@@ -20,7 +20,6 @@
 <script>
 import Article from "@/components/ui/Article";
 
-import axios from "axios";
 export default {
   name: "articles-section",
   data() {
@@ -48,20 +47,24 @@ export default {
   methods: {
     async getLatestArticles() {
       try {
-        let articles = await axios.get(
-          "https://servicepad-post-api.herokuapp.com/articles/"
-        );
+        let { data } = await fetch(
+          "https://servicepad-post-api.herokuapp.com/articles/",
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        ).then((res) => res.json());
 
-        console.log(articles);
-
-        this.articles = articles;
+        this.articles = data ? data : [];
       } catch (error) {
         console.error(error);
       }
     },
   },
   created() {
-    //this.getLatestArticles();
+    this.getLatestArticles();
   },
   components: { Article },
 };
