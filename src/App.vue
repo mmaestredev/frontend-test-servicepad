@@ -1,7 +1,7 @@
 <template>
   <TopBar />
   <router-view> </router-view>
-  <Articles :nocta="$route.name == 'blogging'" />
+  <Articles :articles="articles.slice(-4)" :nocta="$route.name == 'blogging'" />
   <Footer />
 </template>
 
@@ -13,6 +13,31 @@ import Footer from "@/components/Footer.vue";
 export default {
   name: "App",
   components: { TopBar, Footer, Articles },
+  data() {
+    return { articles: [] };
+  },
+  created() {
+    this.getLatestArticles();
+  },
+  methods: {
+    async getLatestArticles() {
+      try {
+        let { data } = await fetch(
+          "https://servicepad-post-api.herokuapp.com/articles/",
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        ).then((res) => res.json());
+
+        this.articles = data ? data : [];
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
 };
 </script>
 

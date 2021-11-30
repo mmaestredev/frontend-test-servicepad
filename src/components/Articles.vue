@@ -8,7 +8,7 @@
     </div>
     <div class="articles-list">
       <Article
-        v-for="article in articles.slice(-4)"
+        v-for="article in articles"
         :key="article.id"
         :image="article.image_url"
         :title="article.title"
@@ -25,54 +25,13 @@ import Article from "@/components/ui/Article";
 export default {
   name: "articles-section",
   props: {
+    articles: {
+      type: Object,
+    },
     nocta: {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-      articles: [
-        {
-          author: "Yo mismo",
-          content: "contenido interesante",
-          date: "2021-11-25T15:06:01.297620",
-          id: 1,
-          image_url: "https://picsum.photos/533/400?random=2",
-          title: "El titulo",
-        },
-        {
-          author: "Yo mismo",
-          content: "contenido interesante",
-          date: "2021-11-25T15:13:41.162381",
-          id: 2,
-          image_url: "https://picsum.photos/533/400?random=2",
-          title: "El titulo",
-        },
-      ],
-    };
-  },
-  methods: {
-    async getLatestArticles() {
-      try {
-        let { data } = await fetch(
-          "https://servicepad-post-api.herokuapp.com/articles/",
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        ).then((res) => res.json());
-
-        this.articles = data ? data : [];
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
-  created() {
-    this.getLatestArticles();
   },
   components: { Article },
 };

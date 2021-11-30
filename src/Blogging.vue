@@ -3,22 +3,7 @@
     <h1>Add New Blog Article</h1>
     <span>Publish a new blog article to feature in the Easybank homepage.</span>
 
-    <form id="newPost" class="card">
-      <div class="input-group">
-        <label for="">Author</label>
-        <input type="text" />
-      </div>
-      <div class="input-group">
-        <label for="">Blog Title</label>
-        <input type="text" />
-      </div>
-      <div class="input-group">
-        <label for="">Blog Content</label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-      </div>
-
-      <CtaButton style="margin-top: 33px; width: 100%"> Save</CtaButton>
-    </form>
+    <ArticleForm :edit="editArticle" @saved="editArticle = null" />
   </section>
   <section id="previous-articles">
     <h1>Previous Articles</h1>
@@ -37,15 +22,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="{ author, title, content, date, id } in pageArticles"
-          :key="id"
-        >
-          <td>{{ author }}</td>
-          <td>{{ title }}</td>
-          <td>{{ content }}</td>
-          <td>{{ new Date(date).toLocaleDateString() }}</td>
-          <td><router-link to="#newPost">Edit</router-link></td>
+        <tr v-for="article in pageArticles" :key="article.id">
+          <td>{{ article.author }}</td>
+          <td>{{ article.title }}</td>
+          <td>{{ article.content }}</td>
+          <td>{{ new Date(article.date).toLocaleDateString() }}</td>
+          <td>
+            <router-link to="#newPost" @click="editArticle = article"
+              >Edit</router-link
+            >
+          </td>
         </tr>
       </tbody>
     </table>
@@ -69,19 +55,20 @@
 </template>
 
 <script>
+import ArticleForm from "@/components/ui/ArticleForm";
 export default {
   name: "bloggin-layout",
   data() {
     return {
-      articles: [],
       pageSize: 6,
       activePage: 1,
+      editArticle: null,
     };
   },
-  created() {
-    this.getLatestArticles();
-  },
   computed: {
+    articles() {
+      return this.$root.articles;
+    },
     pageArticles() {
       if (this.articles.length) {
         let start =
@@ -99,25 +86,7 @@ export default {
       return Math.round(this.articles.length / this.pageSize);
     },
   },
-  methods: {
-    async getLatestArticles() {
-      try {
-        let { data } = await fetch(
-          "https://servicepad-post-api.herokuapp.com/articles/",
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        ).then((res) => res.json());
-
-        this.articles = data ? data : [];
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
+  components: { ArticleForm },
 };
 </script>
 
@@ -138,47 +107,6 @@ section#previous-articles {
 
 section span {
   color: #99989d;
-}
-
-.card {
-  background: #fff;
-  padding: 42px;
-  width: 693px;
-  border-radius: 8px;
-  margin: 72px auto;
-}
-
-.input-group {
-  margin-bottom: 24px;
-}
-
-label {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: #2d314e;
-}
-
-input,
-textarea {
-  padding: 10px;
-  display: block;
-  margin: 5px 0;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  box-sizing: border-box;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
-  width: 100%;
-}
-
-textarea {
-  resize: vertical;
-}
-
-input:focus,
-textarea:focus {
-  border: 1px solid #84e1a7;
 }
 
 table {
