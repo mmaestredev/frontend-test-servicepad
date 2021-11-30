@@ -64,9 +64,15 @@ export default {
       this.activeItem = item;
     },
   },
-  created() {
-    let hash = window.location.hash;
-    if (hash) this.setActiveItem(hash.replace("#", ""));
+  watch: {
+    $route({ hash, name }) {
+      if (hash) this.setActiveItem(hash.replace("#", ""));
+      else if (name == "root") {
+        this.setActiveItem("home");
+      } else if (name == "blogging") {
+        this.setActiveItem("blog");
+      }
+    },
   },
 };
 </script>
